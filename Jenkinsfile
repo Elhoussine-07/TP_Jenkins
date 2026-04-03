@@ -1,9 +1,15 @@
 pipeline {
     agent any
+
+    tools {
+        maven 'Maven-3'  // Assurez-vous que Maven est configuré dans Jenkins > Tools
+    }
+
     environment {
         App_NAME = 'jenkins-pipeline'
         DEPLOY_DIR = '/opt/apps/mon-application'
     }
+
     stages {
         stage('checkout') {
             steps {
@@ -12,7 +18,7 @@ pipeline {
         }
         stage('build') {
             steps {
-            sh 'mvn clean compile'
+                sh 'mvn clean compile'
             }
         }
         stage('Tests unitaires') {
@@ -21,10 +27,8 @@ pipeline {
             }
             post {
                 always {
-                    // Publier les résultats JUnit dans l'interface Jenkins
                     junit 'target/surefire-reports/*.xml'
                 }
-
             }
         }
     }

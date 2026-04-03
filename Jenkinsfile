@@ -1,8 +1,9 @@
 pipeline {
-    agent any
-
-    tools {
-        maven 'Maven-3'  // Assurez-vous que Maven est configuré dans Jenkins > Tools
+    agent {
+        docker {
+            image 'maven:3.8-openjdk-11'
+            args '-v /root/.m2:/root/.m2'
+        }
     }
 
     environment {

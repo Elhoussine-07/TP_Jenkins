@@ -14,6 +14,8 @@ public class Main {
         System.out.println("4. Division");
         System.out.print("Choisissez une option (1-4): ");
 
+
+        /// /
         int choice = scanner.nextInt();
 
         System.out.print("Entrez le premier nombre: ");

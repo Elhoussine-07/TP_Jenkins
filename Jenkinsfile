@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'maven-agent' }
 
     environment {
         App_NAME = 'jenkins-pipeline'
